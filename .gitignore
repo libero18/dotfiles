@@ -43,16 +43,18 @@
 # 無視したくない "ディレクトリ" は以下に "![ディレクトリ名]" で指定する。
 ##### directory #####
 !/macos/
-!/*/script/
-!/macos/script/AppleScript/
-!/macos/script/AppleScript/xcode-command-line-tools/
-!/macos/script/Serverkit/
+!/macos/scpt/
+!/*/nodes/
+!/*/recipes/
+!/*/spec/
+
 
 # 無視したくない "拡張子" は以下に "![拡張子名]" で指定する。
 ##### extension #####
 !.gitkeep
 !*.rb
 !*.yml
+!*.erb
 !*.md
 !*.sh
 !*.scpt

@@ -2,75 +2,102 @@
 
 ### Environment Variable
 USER = 'libero18'
-INSTALLER = "https://github.com/#{USER}/dotfiles/archive/master.zip"
-SSHFILES = "https://#{USER}@bitbucket.org/#{USER}/.ssh.git"
-WORKINGDIR = '/tmp/dotfiles'
-TMPFILE = '/tmp/dotfiles.zip'
+REPO = 'dotfiles'
+URL = "https://github.com/#{USER}/#{REPO}/archive/master.zip"
+TMPDIR = '/tmp'
+TMPFILE = "#{TMPDIR}/master.zip"
+WORKINGDIR = "#{TMPDIR}/#{REPO}"
+SCPTDIR = File::expand_path("#{WORKINGDIR}/#{REPO}-master/macos/scpt")
+RECIPEDIR = File::expand_path("#{WORKINGDIR}/#{REPO}-master/macos/recipes")
+NODEDIR = File::expand_path("#{WORKINGDIR}/#{REPO}-master/macos/nodes")
 
 
-### input bitbucket password
-require "io/console"
-require "readline"
-PASSWORD = STDIN.noecho { Readline.readline("#{USER}@bitbucket.org Password: ").tap { puts } }
+### Required Packages
+require 'io/console'
+require 'find'
+require 'shell'
 
 
 ### Download installer
-system("curl -LSfs -o #{TMPFILE} #{INSTALLER}")
-system("sudo unzip -oq #{TMPFILE} -d #{WORKINGDIR}")
-APPLESCRIPTDIR = File::expand_path("#{WORKINGDIR}/macos/script/AppleScript/")
-SERVERKITDIR = File::expand_path("#{WORKINGDIR}/macos/script/Serverkit/")
+system("test -d #{TMPDIR}/#{REPO} && sudo rm -rf #{TMPDIR}/#{REPO}")
+system("curl -LSfs -o #{TMPFILE} #{URL}")
+system("unzip -oq #{TMPFILE} -d #{TMPDIR}/#{REPO}")
+system("rm -rf #{TMPFILE}")
 
 
-### cd working path
-require 'shell'
-shell = Shell.new
-shell.pushd "#{WORKINGDIR}/dotfiles-master"
+### select install type
+nodes = Array.new
+node = ''
+Find.find("#{NODEDIR}") do |path|
+  next unless FileTest.file?(path)
+  nodes.push(File.basename(path, '.yml'))
+end
+node = ENV["NODE"] if ENV["NODE"]
+until nodes.include?(node.to_s) do
+  io = IO.console
+  print "Select Node Type ? ( #{nodes.join(' | ')} ): "
+  node = io.noecho(&:gets).chop
+  print "\n"
+end
+NODE = node
 
 
-### Xcode Command Line Tools
-unless system('sudo xcode-select -p > /dev/null 2>&1')
-  SCRIPTDIR = "#{APPLESCRIPTDIR}/xcode-command-line-tools"
-  DB = '/Library/Application\ Support/com.apple.TCC/TCC.db'
-  SUPPORTED_TERMINALS = %w[
-    com.apple.Terminal
-    com.googlecode.iterm2
-  ]
+### sudo
+system("sudo sh -c \"echo '#includedir /etc/sudoers.d' >> /etc/sudoers\"") unless system("sudo cat /etc/sudoers | grep '^#includedir\s*/etc/sudoers.d$' > /dev/null 2>&1")
+unless system('test -d /etc/sudoers.d > /dev/null 2>&1')
+  system('sudo mkdir -p /etc/sudoers.d')
+  system('sudo chown root:wheel /etc/sudoers.d')
+  system('sudo chmod 755 /etc/sudoers.d')
+end
+if system('test -d /etc/sudoers.d > /dev/null 2>&1')
+  system("sudo sh -c \"echo '%wheel ALL=(ALL) NOPASSWD: ALL' > /etc/sudoers.d/wheel\"")
+  system('sudo chown root:wheel /etc/sudoers.d/wheel')
+  system('sudo chmod 440 /etc/sudoers.d/wheel')
+end
+system('sudo dscl . -append /Groups/wheel GroupMembership $(whoami)') unless system('dscl . -read /Groups/wheel | grep ^GroupMembership | grep $(whoami) > /dev/null 2>&1')
 
-  SUPPORTED_TERMINALS.each do |terminal|
-    system('$(sudo sqlite3 "#{DB} INSERT OR REPLACE INTO access VALUES(\'kTCCServiceAccessibility\',\'#{terminal}\',0,1,1,NULL);")')
+
+### Xcode Command Line Tools (Run AppleScript)
+unless system('xcode-select -p > /dev/null 2>&1')
+  system("sudo osascript #{SCPTDIR}/xcode-select-install.scpt")
+  sleep 5 until system('xcode-select -p > /dev/null 2>&1')
+  system("sudo osascript #{SCPTDIR}/xcode-select-install-done.scpt")
+end
+
+
+### Start
+sh = Shell.new
+sh.pushd "#{WORKINGDIR}/#{REPO}-master/macos"
+sh.system("git config --global credential.helper osxkeychain")
+
+
+# Install Itamae and its dependencies
+sh.system('sudo gem install bundler') unless system('sudo which bundle > /dev/null')
+sh.system('sudo bundle install --path vendor/bundle --binstubs .bundle/bin > /dev/null')
+sh.system('sudo bundle clean > /dev/null')
+
+
+### Run Itamae
+sh.system('rm -f /tmp/itamae.log') unless File.exist?('/tmp/itamae.log')
+def _cmd_itamae(recipe='')
+  unless recipe.to_s.empty?
+    "bundle exec itamae local #{RECIPEDIR}/#{recipe}.rb -y #{NODEDIR}/#{NODE}.yml -l debug --no-color >> /tmp/itamae.log"
   end
-
-  system('sudo xcode-select --install')
-  system("sudo osascript #{SCRIPTDIR}/start_install.scpt")
-  sleep 3 until system('sudo xcode-select -p > /dev/null 2>&1')
-  system("sudo osascript #{SCRIPTDIR}/click_done.scpt")
 end
 
 
 ### Homebrew
-HOMEBREWINSTALLER = 'https://raw.githubusercontent.com/Homebrew/install/master/install'
-system("sudo curl -fsSL #{HOMEBREWINSTALLER} | ruby") unless system('sudo which brew > /dev/null')
+sh.system(_cmd_itamae('brew'))
+
+### Clone Repository (ghq get)
+sh.system(_cmd_itamae('ghq'))
 
 
-# Install serverkit and its dependencies
-system('sudo gem install bundler') unless system('sudo which bundle > /dev/null')
-system('sudo bundle install --path vendor/bundle --binstubs .bundle/bin > /dev/null')
-system('sudo bundle clean > /dev/null')
+### End
+sh.popd
 
 
-# Run installer
-case ARGV[0]
-when 'client'
-  system("sudo bundle exec serverkit apply setup.yml.erb --variables=client.yml")
-when 'server'
-  system("sudo bundle exec serverkit apply setup.yml.erb --variables=server.yml")
-end
+### Cleanup
+system("sudo rm -rf #{WORKINGDIR}") if system("test -d #{WORKINGDIR} > /dev/null 2>&1")
 
-
-### cd original path
-shell.popd
-
-
-# Cleanup
-system("sudo rm -rf #{TMPFILE} #{WORKINGDIR}")
 

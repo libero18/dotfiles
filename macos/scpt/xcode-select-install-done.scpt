@@ -1,9 +1,7 @@
-#!/usr/bin/env osascript
 -- See: https://github.com/k0kubun/rebuild/blob/master/script/click_done.scpt
-
 -- Click Done Button
 set timeoutSeconds to 8.0
-my doWithTimeout("click UI Element \"Done\" of window 1 of application process \"Install Command Line Developer Tools\"", timeoutSeconds)
+my doWithTimeout("click UI Element \"完了\" of window 1 of application process \"Install Command Line Developer Tools\"", timeoutSeconds)
 
 on doWithTimeout(uiScript, timeoutSeconds)
   set endDate to (current date) + timeoutSeconds
@@ -20,4 +18,3 @@ end tell"
     end try
   end repeat
 end doWithTimeout
-
