@@ -89,8 +89,8 @@ end
 ### Homebrew
 sh.system(_cmd_itamae('brew'))
 
-### Clone Repository (ghq get)
-sh.system(_cmd_itamae('ghq'))
+### Clone Repository && Setup
+sh.system(_cmd_itamae('repo'))
 
 
 ### End
