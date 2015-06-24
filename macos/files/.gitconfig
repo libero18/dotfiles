@@ -1,0 +1,28 @@
+[user]
+  email = orebil.18@gmail.com
+  name  = NAKAJIMA, Ryuichi (a.k.a. libero18)
+[core]
+  excludesfile = ~/.gitignore
+  editor       = /usr/bin/vim
+[http]
+  sslVerify = false
+[ghq]
+  root       = ~/.repos
+  root       = ~/.go/src
+[color]
+  # colorの設定(以下のコマンドは自動で色つける)
+  status     = auto
+  diff       = auto
+  branch     = auto
+  interactive= auto
+  grep       = auto
+  ui         = auto
+[alias]
+  l          = log --date=local --stat --decorate
+  lp         = log --date=local --stat --decorate -p
+  lg         = log --date=local --graph --all --color --pretty=format:'%Cblue%x09%h %Creset%ce [ %cd ] %Cgreen%x09%s %Cred%d %Creset'
+  s          = status -b -s
+  d          = diff
+  g          = grep --line-number --show-function --color --heading --break
+  ls         = ls-files
+

@@ -1,0 +1,19 @@
+! XTerm
+XTerm*visualBell: false
+XTerm*utf-8: 1
+XTerm*jumpScroll: true
+XTerm*saveLines: 1000
+XTerm*scrollBar: true
+XTerm*rightScrollBar: true
+XTerm.VT100.geometry:105×35+50+20
+XTerm*background: Snow4
+XTerm*foreground: Snow2
+XTerm*forcePackedFont: false
+XTerm*faceSize: 13
+XTerm*ximFont: -misc-fixed-medium-r-normal--14-130-75-75-c-140-jisx0208.1983-0
+XTerm*faceName: Menlo
+XTerm*faceNameDoublesize: Hiragino\ Kaku\ Gothic\ ProN
+XTerm*fontDoublesize: true
+ 
+! Cursor
+XTerm*VT100*cursorBlink: true

@@ -21,7 +21,6 @@
 
 ##### system #####
 !.Xresources
-!.bin
 
 ##### git #####
 !.gitconfig
@@ -34,7 +33,7 @@
 !.rspec
 !.pryrc
 !.gemrc
-!.default-gems
+!default-gems
 !Gemfile
 !Rakefile
 !cpanfile
@@ -47,6 +46,9 @@
 !/*/nodes/
 !/*/recipes/
 !/*/spec/
+!/*/files/
+!/*/files/.bin/
+!/*/files/.etc/
 
 
 # 無視したくない "拡張子" は以下に "![拡張子名]" で指定する。
@@ -63,6 +65,5 @@
 
 # 上記に"無視したくないもの"としてリスト化した中から、
 # さらに"無視したいもの"があれば指定する。
-.bin/st
 
 

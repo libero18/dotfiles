@@ -1,0 +1,75 @@
+## * 参考
+##   + tig(1) Manual Page
+##     - http://jonas.nitro.dk/tig/tig.1.html
+##
+##   + tigrc(5) Manual Page
+##     - http://jonas.nitro.dk/tig/tigrc.5.html
+##
+##   + やけに丁寧なtigの設定ガイド（表示制御編）
+##     - http://qiita.com/yoshikazusawa/items/d99e8b5d6f6a45aa6e2e
+##
+##   + やけに丁寧なtigのキーバインド設定ガイド
+##     - http://qiita.com/yoshikazusawa/items/3eaa6db78fa348d38bfe
+##
+##   + tig の help ビューを纏めてみたお話。
+##     - http://yuzuemon.hatenablog.com/entry/2014/09/29/025715
+##
+
+
+## * main viewの左端にコミットIDを表示する
+##   + 標準設定
+##     - set  main-view = date author commit-title:graph=yes,refs=yes
+##
+set main-view = id date author commit-title:graph=yes,refs=yes
+
+
+## * 画面の表示を分割する
+##   + 標準設定
+##     - set vertical-split = auto
+##
+##   + 縦分割を強制する
+##     - set vertical-split = yes
+##
+##   + 横分割を強制する
+##     - set vertical-split = no
+##
+set vertical-split = auto
+
+
+## * 水平分割したウィンドウの下画面サイズを % で（行数指定も可）指定する
+##   + 標準設定
+##     - set split-view-height = 66%
+##
+set split-view-height = 80%
+
+
+## * 差分の前後の表示行数（diff-context）を指定する
+##   + 標準設定
+##     - set diff-context = 3
+##
+set diff-context = 4
+
+
+## * デフォルトの bind generic G !git gc を無効化する
+##   + 標準設定
+##     - bind generic G !git gc
+##
+##   + 無効化
+##     - bind generic G none
+##
+##   + vim のようにページ移動できるようにする
+##     - bind generic g move-first-line
+##     - bind generic G move-last-line
+##
+bind generic g move-first-line
+bind generic G move-last-line
+
+
+## * 差分表示でインデントや空白のみの変更を無視する
+##   + 標準設定
+##     - set ignore-space = no
+##
+set ignore-space = all
+
+
+
