@@ -28,7 +28,7 @@ if [ -d $HOME/.anyenv/bin ]; then
 fi
 
 # Source oh-my-zsh
-if [ -f ${HOME}/repos/github.com/robbyrussell/oh-my-zsh/oh-my-zsh.sh ]; then
+if [ -f ${HOME}/.repos/github.com/robbyrussell/oh-my-zsh/oh-my-zsh.sh ]; then
     . ${HOME}/.zshenv-oh-my-zsh
 fi
 

@@ -1,0 +1,7 @@
+## plenv + cpanm + carton
+## carton install --path=vendor/carton
+## PERL_CARTON_PATH=vendor/carton carton exec perl -MNet::CIDR -le 'print(join("\n", Net::CIDR::cidr2range("192.68.0.0/16")))'
+## PERL_CARTON_PATH=vendor/carton carton exec perl -MNet::CIDR -le 'print(join("\n", Net::CIDR::range2cidr("192.168.0.0-192.168.255.225")))'
+
+requires 'Net::CIDR';
+

@@ -41,6 +41,7 @@ ghq:
   get_repos:
     - git@bitbucket.org:libero18/vagrantfiles.git
     - git@github.com:libero18/dotfiles.git
+    - git@github.com:riywo/anyenv.git
     - git@github.com:clwit/sitevisor.git
     - git@github.com:mbadolato/iTerm2-Color-Schemes.git
     - git@github.com:robbyrussell/oh-my-zsh.git

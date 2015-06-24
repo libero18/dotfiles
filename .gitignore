@@ -42,7 +42,7 @@
 # 無視したくない "ディレクトリ" は以下に "![ディレクトリ名]" で指定する。
 ##### directory #####
 !/macos/
-!/macos/scpt/
+!/*/scpt/
 !/*/nodes/
 !/*/recipes/
 !/*/spec/

@@ -2,9 +2,8 @@
 
 ## ログイン時のみ最初にバックエンドで実行する
 {
-  ## oh-my-zsh theme
-  if [ ! -L ${HOME}/repos/github.com/robbyrussell/oh-my-zsh/custom/libero18.zsh-theme ]; then 
-    ln -s ${HOME}/repos/github.com/libero18/dotfiles/macos/files/.etc/libero18.zsh-theme ${HOME}/repos/github.com/robbyrussell/oh-my-zsh/custom/
+  if [ -f /Users/nakajima/repos/github.com/libero18/dotfiles/macos/files/.bin/Symlinks.sh ]; then
+    /Users/nakajima/repos/github.com/libero18/dotfiles/macos/files/.bin/Symlinks.sh
   fi
   ## Heroku Toolbelt
   if [ -d /usr/local/heroku/bin ]; then

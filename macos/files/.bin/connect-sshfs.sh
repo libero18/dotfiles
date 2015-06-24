@@ -1,6 +1,6 @@
 #!/bin/sh
 
-CURRENT_MNT_DIR=/Users/nakajima/mntsshfs
+CURRENT_MNT_DIR=/Users/nakajima/.mntsshfs
 REMOTE_DIR=${REMOTE_DIR:-/home/nakajima}
 
 mount_sshfs() {
