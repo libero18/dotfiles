@@ -24,6 +24,11 @@ do
 fi
 done
 
+## .ssh
+if [ -d ${HOME}/.repos/bitbucket.org/libero18/.ssh ]; then
+  ln -Fs $HOME/.repos/bitbucket.org/libero18/.ssh $HOME/.ssh
+fi
+
 ## anyenv
 if [ -d ${HOME}/.repos/github.com/riywo/anyenv ]; then
   ln -Fs $HOME/.repos/github.com/riywo/anyenv $HOME/.anyenv

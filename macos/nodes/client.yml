@@ -1,0 +1,60 @@
+brew:
+  enable_update: true
+  enable_upgrade: true
+  add_repositories:
+    - homebrew/dupes
+    - homebrew/versions
+    - homebrew/binary
+    - peco/peco
+    - motemen/ghq
+  install_packages:
+    - ansible
+    - brew-cask
+    - direnv
+    - ghq
+    - git
+    - jq
+    - openssl
+    - peco
+    - readline
+    - sshfs
+    - tig
+    - tmux
+    - transcrypt
+    - vim
+    - zsh
+  install_apps:
+    - alfred
+    - ansible
+    - boot2docker
+    - caffeine
+    - docker
+    - dropbox
+    - iterm2
+    - karabiner
+    - osxfuse
+    - packer
+    - virtualbox
+    - vagrant
+    - vagrant-manager
+    - xquartz
+ghq:
+  enable_get: true
+  dotssh:
+    url:  'https://libero18@bitbucket.org/libero18/.ssh.git'
+    repo: 'libero18/.ssh'
+  get_repos:
+    - git@bitbucket.org:libero18/vagrantfiles.git
+    - git@github.com:libero18/dotfiles.git
+    - git@github.com:riywo/anyenv.git
+    - git@github.com:clwit/sitevisor.git
+    - git@github.com:mbadolato/iTerm2-Color-Schemes.git
+    - git@github.com:robbyrussell/oh-my-zsh.git
+    - git@github.com:zsh-users/zsh-completions.git
+    - git@github.com:yascentur/RictyDiminished.git
+    - nakajima@ss.clwit.co.jp:/usr/local/clwit/repo/MeetingFacility/WeeklyMeeting.git
+    - nakajima@ss.clwit.co.jp:/usr/local/clwit/repo/_nakajima/rack.git
+    - nakajima@ss.clwit.co.jp:/usr/local/clwit/repo/_nakajima/sitevisor-backup.git
+    - nakajima@ss.clwit.co.jp:/usr/local/clwit/repo/_nakajima/sitevisor-setup.git
+    - nakajima@ss.clwit.co.jp:/usr/local/clwit/repo/_nakajima/sitevisor-wiki.git
+    - nakajima@ss.clwit.co.jp:/usr/local/clwit/repo/_nakajima/testing-bare-metal.git
