@@ -7,7 +7,7 @@ execute 'Repository を管理するディレクトリを作成する' do
   not_if Dir.exist?("#{DOTREPOS}")
 end
 execute 'Git に ghq セクションの設定を行う' do
-  command "git config --global ghq.root #{DOTREPOS}"
+  command "git config --global --replace-all ghq.root #{DOTREPOS}"
 end
 
 ### Get SSH Files
