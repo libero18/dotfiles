@@ -34,9 +34,9 @@ brew:
     - karabiner
     - osxfuse
     - packer
-    - virtualbox
     - vagrant
     - vagrant-manager
+    - virtualbox
     - xquartz
 ghq:
   enable_get: true

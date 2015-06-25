@@ -25,14 +25,14 @@ brew:
     - zsh
   install_apps:
     - alfred
-    - iterm2
-    - virtualbox
-    - vagrant
-    - vagrant-manager
-    - dropbox
     - caffeine
+    - dropbox
+    - iterm2
     - karabiner
     - osxfuse
+    - vagrant
+    - vagrant-manager
+    - virtualbox
 ghq:
   enable_get: true
   dotssh:
