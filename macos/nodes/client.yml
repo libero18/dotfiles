@@ -15,6 +15,7 @@ brew:
     - git
     - jq
     - openssl
+    - packer
     - peco
     - readline
     - sshfs
@@ -33,7 +34,6 @@ brew:
     - iterm2
     - karabiner
     - osxfuse
-    - packer
     - vagrant
     - vagrant-manager
     - virtualbox
