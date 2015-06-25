@@ -7,8 +7,7 @@
 [http]
   sslVerify = false
 [ghq]
-  root       = ~/.repos
-  root       = ~/.go/src
+	root = /Users/nakajima/.repos
 [color]
   # colorの設定(以下のコマンドは自動で色つける)
   status     = auto
@@ -26,3 +25,5 @@
   g          = grep --line-number --show-function --color --heading --break
   ls         = ls-files
 
+[credential]
+	helper = osxkeychain

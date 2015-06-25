@@ -18,7 +18,7 @@ alias Coda2="open -a /Applications/Coda\ 2.app"
 alias atom="open -a /Applications/Atom.app"
 alias rake='bundle exec rake'
 alias rhttpd='ruby -run -e httpd . -p 5000'
-alias st='/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl'
+alias st='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
 
 ## dotfile用のスクリプトpathを設定
 if [ -d $HOME/.bin ]; then
