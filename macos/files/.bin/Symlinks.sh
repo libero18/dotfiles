@@ -40,24 +40,30 @@ if [ -d ${HOME}/.repos/github.com/riywo/anyenv -a ! -L $HOME/.anyenv ]; then
 fi
 
 ## anyenv-update
-if [ -L $HOME/.anyenv ]; then
-  if [ ! -d $HOME/.anyenv/plugins ]; then
-    mkdir -p $HOME/.anyenv/plugins
-  fi
-  if [ ! -L $HOME/.anyenv/plugins/anyenv-update ]; then
-    ln -fs $HOME/.repos/github.com/znz/anyenv-update $HOME/.anyenv/plugins/anyenv-update >/dev/null 2>&1
-  fi
+if [ -L $HOME/.anyenv -a ! -d $HOME/.anyenv/plugins ]; then
+  mkdir -p $HOME/.anyenv/plugins >/dev/null 2>&1
+fi
+if [ -L $HOME/.anyenv -a ! -L $HOME/.anyenv/plugins/anyenv-update ]; then
+  ln -fs $HOME/.repos/github.com/znz/anyenv-update $HOME/.anyenv/plugins/anyenv-update >/dev/null 2>&1
 fi
 
 ## rbenv-plug
-if [ -L $HOME/.anyenv ]; then
-  if [ ! -d ${HOME}/.anyenv/envs/rbenv ]; then
-    ${HOME}/.anyenv/bin/anyenv install rbenv
-    source $HOME/.zshrc
-  fi
-  if [ ! -L $HOME/.anyenv/envs/rbenv/plugins/rbenv-plug ]; then
-    ln -fs $HOME/.repos/github.com/znz/rbenv-plug $HOME/.anyenv/envs/rbenv/plugins/rbenv-plug >/dev/null 2>&1
-  fi
+if [ -L $HOME/.anyenv -a ! -d ${HOME}/.anyenv/envs/rbenv ]; then
+  ${HOME}/.anyenv/bin/anyenv install rbenv >/dev/null 2>&1
+fi
+if [ -L $HOME/.anyenv -a ! -L $HOME/.anyenv/envs/rbenv/plugins/rbenv-plug ]; then
+  ln -fs $HOME/.repos/github.com/znz/rbenv-plug $HOME/.anyenv/envs/rbenv/plugins/rbenv-plug >/dev/null 2>&1
+fi
+if [ -L $HOME/.anyenv/envs/rbenv/plugins/rbenv-plug ]; then
+  $HOME/.anyenv/envs/rbenv/bin/rbenv plug gem-rehash >/dev/null 2>&1
+  $HOME/.anyenv/envs/rbenv/bin/rbenv plug default-gems >/dev/null 2>&1
+  $HOME/.anyenv/envs/rbenv/bin/rbenv plug binstubs >/dev/null 2>&1
+  $HOME/.anyenv/envs/rbenv/bin/rbenv rehash
+fi
+
+## rbenv-default-gems
+if [ -d ${HOME}/.anyenv/envs/rbenv -a ! -L ${HOME}/.anyenv/envs/rbenv/default-gems ]; then
+  ln -fs $HOME/.etc/default-gems ${HOME}/.anyenv/envs/rbenv/default-gems >/dev/null 2>&1
 fi
 
 cd - >/dev/null 2>&1
