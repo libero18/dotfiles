@@ -94,6 +94,7 @@ sh.system(_cmd_itamae('repo'))
 
 
 ### End
+sh.system('$HOME/.repos/github.com/libero18/dotfiles/macos/files/.bin/Symlinks.sh')
 sh.popd
 
 
