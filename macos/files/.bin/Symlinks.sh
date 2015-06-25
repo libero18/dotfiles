@@ -31,7 +31,7 @@ fi
 
 ## oh-my-zsh theme
 if [ ! -L ${HOME}/.repos/github.com/robbyrussell/oh-my-zsh/custom/libero18.zsh-theme ]; then
-  ln -fs ${HOME}/.repos/github.com/libero18/dotfiles/macos/files/.etc/libero18.zsh-theme ${HOME}/repos/github.com/robbyrussell/oh-my-zsh/custom/ >/dev/null 2>&1
+  ln -fs ${HOME}/.etc/libero18.zsh-theme ${HOME}/repos/github.com/robbyrussell/oh-my-zsh/custom/libero18.zsh-theme >/dev/null 2>&1
 fi
 
 ## anyenv
