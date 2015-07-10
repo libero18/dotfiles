@@ -60,3 +60,17 @@ ghq:
     - nakajima@ss.clwit.co.jp:/usr/local/clwit/repo/_nakajima/sitevisor-setup.git
     - nakajima@ss.clwit.co.jp:/usr/local/clwit/repo/_nakajima/sitevisor-wiki.git
     - nakajima@ss.clwit.co.jp:/usr/local/clwit/repo/_nakajima/testing-bare-metal.git
+vagrant:
+  to_enable: true
+  pulgins:
+    - dotenv
+    - vagrant-digitalocean
+    - vagrant-vyos
+    - vagrant-vbguest
+    - vagrant-cachier
+    - vagrant-omnibus
+  boxes:
+    - 'digital_ocean https://github.com/smdahlen/vagrant-digitalocean/raw/master/box/digital_ocean.box'
+
+
+
