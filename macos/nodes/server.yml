@@ -66,4 +66,3 @@ vagrant:
     - vagrant-omnibus
   boxes:
     - 'digital_ocean https://github.com/smdahlen/vagrant-digitalocean/raw/master/box/digital_ocean.box'
-    - higebu/vyos-1.1.4-amd64
