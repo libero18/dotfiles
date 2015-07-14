@@ -57,6 +57,7 @@ ghq:
     - nakajima@ss.clwit.co.jp:/usr/local/clwit/repo/_nakajima/testing-bare-metal.git
 vagrant:
   to_enable: true
+  enable_update: true
   pulgins:
     - dotenv
     - vagrant-digitalocean
