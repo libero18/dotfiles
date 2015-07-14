@@ -54,4 +54,3 @@ end
 execute "Setup alfred" do
   command "brew cask alfred link"
 end
-

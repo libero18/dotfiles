@@ -49,5 +49,3 @@ execute 'Ricty Diminished をインストールする' do
   command "find #{RICTYREPO} -name 'Ricty*.ttf' |xargs -J % cp -f % ~/Library/Fonts/ && fc-cache -vf"
   only_if "test -d #{RICTYREPO}"
 end
-
-
