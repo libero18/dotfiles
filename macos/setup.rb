@@ -92,6 +92,8 @@ sh.system(_cmd_itamae('brew'))
 ### Clone Repository && Setup
 sh.system(_cmd_itamae('repo'))
 
+### Vagrant
+sh.system(_cmd_itamae('vagrant'))
 
 ### End
 sh.system('$HOME/.repos/github.com/libero18/dotfiles/macos/files/.bin/Symlinks.sh')
