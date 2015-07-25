@@ -72,3 +72,12 @@ vagrant:
     - vagrant-omnibus
   boxes:
     - 'digital_ocean https://github.com/smdahlen/vagrant-digitalocean/raw/master/box/digital_ocean.box'
+anyenv:
+  to_enable: true
+  enable_update: true
+  rbenv:
+    to_enable: true
+    pulgins:
+      - gem-rehash
+      - default-gems
+      - rbenv-binstubs

@@ -7,7 +7,7 @@
 [http]
   sslVerify = false
 [ghq]
-	root = /Users/nakajima/.repos
+	root = /Users/Ryuichi/.repos
 [color]
   # colorの設定(以下のコマンドは自動で色つける)
   status     = auto

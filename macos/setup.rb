@@ -95,6 +95,9 @@ sh.system(_cmd_itamae('repo'))
 ### Vagrant
 sh.system(_cmd_itamae('vagrant'))
 
+### anyenv
+sh.system(_cmd_itamae('anyenv'))
+
 ### End
 sh.system('$HOME/.repos/github.com/libero18/dotfiles/macos/files/.bin/Symlinks.sh')
 sh.popd
@@ -102,5 +105,3 @@ sh.popd
 
 ### Cleanup
 system("sudo rm -rf #{WORKINGDIR}") if system("test -d #{WORKINGDIR} > /dev/null 2>&1")
-
-

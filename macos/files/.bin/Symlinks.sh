@@ -55,14 +55,6 @@ if [ -L $HOME/.anyenv -a ! -L $HOME/.anyenv/envs/rbenv/plugins/rbenv-plug ]; the
   ln -fs $HOME/.repos/github.com/znz/rbenv-plug $HOME/.anyenv/envs/rbenv/plugins/rbenv-plug >/dev/null 2>&1
 fi
 
-## rbenv plugins
-if [ -L $HOME/.anyenv/envs/rbenv/plugins/rbenv-plug ]; then
-  $HOME/.anyenv/envs/rbenv/bin/rbenv plug gem-rehash >/dev/null 2>&1
-  $HOME/.anyenv/envs/rbenv/bin/rbenv plug default-gems >/dev/null 2>&1
-  $HOME/.anyenv/envs/rbenv/bin/rbenv plug binstubs >/dev/null 2>&1
-  $HOME/.anyenv/envs/rbenv/bin/rbenv rehash
-fi
-
 ## rbenv-default-gems
 if [ -d ${HOME}/.anyenv/envs/rbenv -a ! -L ${HOME}/.anyenv/envs/rbenv/default-gems ]; then
   ln -fs $HOME/.etc/default-gems ${HOME}/.anyenv/envs/rbenv/default-gems >/dev/null 2>&1
