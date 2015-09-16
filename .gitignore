@@ -37,6 +37,8 @@
 !Gemfile
 !Rakefile
 !cpanfile
+!*.pf.conf
+!*.pf.plist
 
 
 # 無視したくない "ディレクトリ" は以下に "![ディレクトリ名]" で指定する。

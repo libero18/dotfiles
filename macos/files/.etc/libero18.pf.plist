@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>libero18.pf.conf</string>
+  <key>WorkingDirectory</key>
+  <string>/var/run</string>
+  <key>Program</key>
+  <string>/sbin/pfctl</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>pfctl</string>
+    <string>-ef</string>
+    <string>/etc/pf.anchors/libero18.pf.conf</string>
+  </array>
+  <key>RunAtLoad</key>
+  <true/>
+</dict>
+</plist>
+
+<!--
+sudo cp ~/.repos/github.com/libero18/dotfiles/macos/files/.etc/libero18.pf.plist /Library/LaunchDaemons/libero18.pf.plist
+sudo ln -s ~/.repos/github.com/libero18/dotfiles/macos/files/.etc/libero18.pf.conf /etc/pf.anchors/libero18.pf.conf
+sudo launchctl load /Library/LaunchDaemons/libero18.pf.plist
+-->
