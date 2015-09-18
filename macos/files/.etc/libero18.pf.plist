@@ -3,19 +3,32 @@
 <plist version="1.0">
 <dict>
   <key>Label</key>
-  <string>libero18.pf.conf</string>
+  <string>libero18.pf</string>
   <key>WorkingDirectory</key>
   <string>/var/run</string>
+  <key>UserName</key>
+  <string>root</string>
+  <key>GroupName</key>
+  <string>wheel</string>
   <key>Program</key>
   <string>/sbin/pfctl</string>
   <key>ProgramArguments</key>
   <array>
     <string>pfctl</string>
-    <string>-ef</string>
+    <string>-e</string>
+    <string>-f</string>
     <string>/etc/pf.anchors/libero18.pf.conf</string>
   </array>
   <key>RunAtLoad</key>
   <true/>
+  <key>ServiceDescription</key>
+  <string>FreeBSD Packet Filter (pf) daemon</string>
+<!--
+  <key>StandardErrorPath</key>
+  <string>/var/log/pf.log</string>
+  <key>StandardOutPath</key>
+  <string>/var/log/pf.log</string>
+-->
 </dict>
 </plist>
 
@@ -23,4 +36,5 @@
 sudo cp ~/.repos/github.com/libero18/dotfiles/macos/files/.etc/libero18.pf.plist /Library/LaunchDaemons/libero18.pf.plist
 sudo ln -s ~/.repos/github.com/libero18/dotfiles/macos/files/.etc/libero18.pf.conf /etc/pf.anchors/libero18.pf.conf
 sudo launchctl load /Library/LaunchDaemons/libero18.pf.plist
+sudo pfctl -sr
 -->
