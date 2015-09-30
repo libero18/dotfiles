@@ -23,12 +23,10 @@
   <true/>
   <key>ServiceDescription</key>
   <string>FreeBSD Packet Filter (pf) daemon</string>
-<!--
   <key>StandardErrorPath</key>
   <string>/var/log/pf.log</string>
   <key>StandardOutPath</key>
   <string>/var/log/pf.log</string>
--->
 </dict>
 </plist>
 
