@@ -20,6 +20,7 @@ brew:
     - peco
     - readline
     - sshfs
+    - tcptraceroute
     - tig
     - tmux
     - transcrypt
