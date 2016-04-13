@@ -67,5 +67,14 @@ def range_to_cidr(range_address='')
   return cidrs
 end
 
-p range_to_cidr(ARGV[0])
+unless ARGV[0].to_s.length > 0
+  puts "Usage: cidr.rb '192.168.1.2-192.168.3.4'"
+  puts "       cidr.rb '192.168.1.2 192.168.3.4'"
+  puts "       cidr.rb '192.168.1.2 - 192.168.3.4'"
+else
+  puts "* #{ARGV[0]}"
+  range_to_cidr(ARGV[0]).each do |address|
+    puts "  + #{address}"
+  end
+end
 
