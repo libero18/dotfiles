@@ -62,6 +62,7 @@ ghq:
     - nakajima@ss.clwit.co.jp:/usr/local/clwit/repo/_nakajima/sitevisor-setup.git
     - nakajima@ss.clwit.co.jp:/usr/local/clwit/repo/_nakajima/sitevisor-wiki.git
     - nakajima@ss.clwit.co.jp:/usr/local/clwit/repo/_nakajima/testing-bare-metal.git
+    - nakajima@ss.clwit.co.jp:/usr/local/clwit/repo/Hosting/vsv/domains/ict-isac.jp.git
 vagrant:
   to_enable: true
   pulgins:
