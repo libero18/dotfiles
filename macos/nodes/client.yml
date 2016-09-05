@@ -9,6 +9,7 @@ brew:
     - motemen/ghq
   install_packages:
     - ansible
+    - arping
     - brew-cask
     - byobu
     - direnv
