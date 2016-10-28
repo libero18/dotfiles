@@ -45,9 +45,7 @@ fi
 ## Homebrew
 if command -v brew &>/dev/null; then
   export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
-fi
-if command -v brew-cask &>/dev/null; then
-  export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+  export HOMEBREW_CASK_OPTS="--appdir=/Applications --caskroom=/opt/homebrew-cask/Caskroom"
 fi
 
 ## Go
